@@ -12,6 +12,7 @@ var choiceD = document.getElementById("d");
 score = 0;
 var question = [
     {
+        question: "A clickable link that takes you from one document to another, or to any resource, even within the some document, with text that is highlighted in some fashion is called",
         question: "",
         choiceA: "",
         choiceB: "",
@@ -19,14 +20,46 @@ var question = [
         choiceD: "",
         correct: ""
     },
-    {
-        question: "",
-        choiceA: "",
-        choiceB: "",
+   }
+choiceA: "",
+    choiceB: "",
         choiceC: "",
-        choiceD: "",
-        correct: ""
+            choiceD: "",
+                correct: ""
     },
+{
+    question: "",
+        choiceA: "",
+            choiceB: "",
+                choiceC: "",
+                    choiceD: "",
+                        correct: ""
+},
+
+{
+    question: "",
+        choiceA: "",
+            choiceB: "",
+                choiceC: "",
+                    choiceD: "",
+                        correct: ""
+},
+{
+    question: "",
+        choiceA: "",
+            choiceB: "",
+                choiceC: "",
+                    choiceD: "",
+                        correct: ""
+},
+{
+    question: "",
+        choiceA: "",
+            choiceB: "",
+                choiceC: "",
+                    choiceD: "",
+                        correct: ""
+},
 
 ]
 
