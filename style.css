@@ -1,4 +1,4 @@
-body{
+body {
 background-color: gray;
 font-family: 'Times New Roman', Times, serif;
 
@@ -13,21 +13,21 @@ font-family: 'Times New Roman', Times, serif;
     margin: auto;
     text-align: center;
 }   
-.timer{
+.timer {
     float:right;
     
 }
-.score{
+.score {
     float: right;
     overflow: auto;
     clear: both;
 }
-#questions{
+#questions {
     display: none;
     font-size: xx-small;
 }
-#sbutton{
-    display: inline-block;
+#sbutton {
+  display: inline-block;
   padding: 15px 25px;
   font-size: 24px;
   cursor: pointer;
@@ -39,18 +39,17 @@ font-family: 'Times New Roman', Times, serif;
   border: none;
   border-radius: 15px;
   box-shadow: 0 9px #999;
-     background-color: lightblue;
+  background-color: lightblue;
 }
-.choices{
-    list-style-type: lower-alpha;
+#A:hover , #B:hover , #C:hover ,#D:hover { 
+    background-color: lightgoldenrodyellow;
+
 }
-#quiz , #correct {
+#quiz , #correct, #score {
     display: none;
     
 }
-#score {
-    display: none;
-}
+
 
 
 

@@ -138,7 +138,7 @@ score = 0;
 
 function renderQuestion() {
     var q = questions[questionIndex];
-    question.innerHTML = "<p>" + q.question + "</p>";
+    question.innerHTML = "<h4>" + q.question + "</h4>";
     choiceA.innerHTML = q.choiceA;
     choiceB.innerHTML = q.choiceB;
     choiceC.innerHTML = q.choiceC;
