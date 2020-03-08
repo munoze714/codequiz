@@ -18,7 +18,7 @@ var questions = [
         choiceB: "URL",
         choiceC: "Protocol",
         choiceD: "Hyperlink",
-        correct: "D",
+        correct: "Hyperlink",
     },
     {
         question: "HTML the TITLE tag is …",
@@ -26,7 +26,7 @@ var questions = [
         choiceB: "What shows at the very top of your browser’s window",
         choiceC: "The largest text, usually at the top of your page",
         choiceD: "The most important HTML item",
-        correct: "B",
+        correct: "What shows at the very top of your browser’s window",
     },
     {
         question: "How many parts does a HTML character entity has",
@@ -34,7 +34,7 @@ var questions = [
         choiceB: "A character entity has three parts",
         choiceC: "Character entities only have one part",
         choiceD: "Character entities have as many parts as is necessary",
-        correct: "B",
+        correct: "A character entity has three parts",
     },
     {
         question: "Which of the following are used to view documents on the Internet and World Wide Web",
@@ -42,7 +42,7 @@ var questions = [
         choiceB: "system software",
         choiceC: "browsers",
         choiceD: "Explorers",
-        correct: "C",
+        correct: "browsers",
     },
     {
         question: "Choose the correct HTML tag for the largest heading",
@@ -50,7 +50,7 @@ var questions = [
         choiceB: "the H6 tag",
         choiceC: "the h4 tag",
         choiceD: "the largest tag",
-        correct: "A",
+        correct: "the h1 tag",
     },
     {
         question: "The information that is the visible part of the document goes into this section which begins",
@@ -58,7 +58,7 @@ var questions = [
         choiceB: "the body tag",
         choiceC: "the HTML tag",
         choiceD: "the section tag",
-        correct: "B",
+        correct: "the body tag",
     },
     {
         question: "When specifying the source of an image referenced in your HTML document, the image should",
@@ -66,7 +66,7 @@ var questions = [
         choiceB: "be located on the flashdrive in use",
         choiceC: "be sized apprpriately on the HTML page in order to fit",
         choiceD: "be of a format tht HTML can recognize and manipulate",
-        correct: "A",
+        correct: "either be within the same folder as the HTML page, or the complete path name should be specified.",
     },
     {
         question: "How can you make a list that lists the items with numbers?",
@@ -74,7 +74,7 @@ var questions = [
         choiceB: "the ul tag",
         choiceC: "the ol tag",
         choiceD: "the dl tag",
-        correct: "C",
+        correct: "the ol tag",
     },
     {
         question: "Which of the following means not equalt to in Javascript",
@@ -82,13 +82,13 @@ var questions = [
         choiceB: "<>",
         choiceC: "=!",
         choiceD: "not",
-        correct: "A",
+        correct: "!=",
     },
     {
         question: "The variables Numb1 and numb1, are interchangeable in JavaScript",
         choiceA: "True",
         choiceB: "False",
-        correct: "B",
+        correct: "False",
     },
     {
         question: "Where is the correct place to insert a JavaScript",
@@ -96,7 +96,7 @@ var questions = [
         choiceB: "the head section",
         choiceC: "it must be inserted in the body and head section",
         choiceD: "it can be inserted in either the body or the head, as it makes no difference",
-        correct: "A",
+        correct: "The body section",
     },
     {
         question: "Which of the following is not a use of JavaScript",
@@ -104,13 +104,13 @@ var questions = [
         choiceB: "cookies",
         choiceC: "form validation",
         choiceD: "user verification",
-        correct: "D",
+        correct: "user verification",
     },
     {
         question: "Curly Brackets look like this < >",
         choiceA: "True",
         choiceB: "False",
-        correct: "B",
+        correct: "False",
     },
     {
         question: "HTML:",
@@ -118,7 +118,7 @@ var questions = [
         choiceB: "Hyper Type Markup Language",
         choiceC: "Hyperlink Markup Language",
         choiceD: "Hold that microphone loosely",
-        correct: "A",
+        correct: "Hypertext Markup Language",
     },
     {
         question: "Value:",
@@ -126,14 +126,16 @@ var questions = [
         choiceB: "defines the value of a website in dollars.",
         choiceC: "is used only in HTML tags.",
         choiceD: "gives meaning to the attribute.",
-        correct: "D",
+        correct: "gives meaning to the attribute.",
     },
 ]
 var count = 0;
-var questionLength = questions.length - 1;
-var questionIndex = 0;
+var questionLength = questions.length;
+var currentIndex = 0;
+var count = 0;
 var timer;
-score = 0;
+var score = 0;
+var choices;
 
 sbutton.addEventListener("click", startQuiz);
 choiceA.addEventListener("click", checkAnswer);
@@ -145,48 +147,46 @@ function startQuiz() {
     start.style.display = "none";
     renderQuestion();
     quiz.style.display = "block";
+    checkAnswer(event)
 
 }
-function renderQuestion() {
-    var q = questions[questionIndex];
-    question.innerHTML = "<h4>" + q.question + "</h4>";
-    choiceA.innerHTML = q.choiceA;
-    choiceB.innerHTML = q.choiceB;
-    choiceC.innerHTML = q.choiceC;
-    choiceD.innerHTML = q.choiceD;
+function renderQuestion(currentIndex) {
+    var q = questions[currentIndex];
+    question.textContent = (currentIndex + 1) + "." + q.question;
+    choiceA.textContent = q.choiceA;
+    choiceB.textContent = q.choiceB;
+    choiceC.textContent = q.choiceC;
+    choiceD.textContent = q.choiceD;
     checkAnswer(event);
 }
 
-
 function checkAnswer(event) {
-    var id = event.target.id;
+    var chosenAnswer = event.target.innerHtml;
 
-    if (id === questions[questionLength].correct) {
-        questionIndex++;
+    if (chosenAnswer === questions[currentIndex].correct) {
+        currentIndex++;
+        score += 10;
         console.log("correct");
+
     } else {
-        console.log("wrong")
+        console.log; ("wrong");
     }
+    if (currentIndex === questionLength - 1) {
+        quiz.style.display = "none";
+        start.style.display = "block";
+        sbutton.textContent = "Finish";
+    }
+    if (currentIndex === questionLength) {
+        choices.textContent = "Your Score: " + score;
 
-    //     score++;
-    //     
-    // showAnswer.innerText = "Correct!!";
-    // } else {
-    // showAnswer.innerText = "Wrong"
-
-    // } if (questionLength < questionIndex) {
-    //     questionLength++;
-    //     renderQuestion();
-    //     } else {
-    //         clearInterval(timer);
-    //         scoreRender();
-    //     }
-
-
-    // function scoreRender() {
-    //     scoreId.style.display = "block";
-    //     var scorePercent = Math.round(100 * score / questions.length);
-    //     scoreId.innerText = "Score: " + scorePercent;
-    // }
+    }
+    renderQuestion(currentIndex);
 }
+renderQuestion(currentIndex);
+    // function renderanswer() {
+    //     for (var qIndex = 0; qIndex <= questionLength; qIndex++) {
+    //         choices = [];
+    //         for (id in questions[questionLength].correct) {
+    //             correct.push()
+    //         }
 
