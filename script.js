@@ -132,9 +132,8 @@ var questions = [
 var count = 0;
 var questionLength = questions.length;
 var currentQuestion = 0;
-var count = 0;
 var timer;
-score = 0;
+var score = 0;
 var correct = questions.correct;
 
 sbutton.addEventListener("click", startQuiz);
@@ -147,7 +146,6 @@ function startQuiz() {
     start.style.display = "none";
     renderQuestion();
     quiz.style.display = "block";
-    // renderanswer();
 }
 
 function renderQuestion() {
@@ -159,19 +157,20 @@ function renderQuestion() {
     choiceD.innerHTML = q.choiceD;
 }
 
-
 function checkAnswer(event) {
     var chosenAnswer = event.target.innerHTML;
-    // console.log(event.target.innerHtml);
 
     if (chosenAnswer === questions[currentQuestion].correct) {
+        // showAnswer.textContent = "CORRECT";
         currentQuestion++;
-        console.log("correct");
+        score += 10;
         renderQuestion();
     } else {
-        console.log("wrong");
-    }
+        // showAnswer.textContent = "WRONG";
+        // currentQuestion++;
+        // renderQuestion();
 
+    }
 }
 
 
