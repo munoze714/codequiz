@@ -1,16 +1,15 @@
 var questions = document.getElementById("questions");
-var answer = document.getElementById("answer")
+var showAnswer = document.getElementById("answer")
 var start = document.getElementById("start");
 var sbutton = document.getElementById("sbutton");
 var quiz = document.getElementById("quiz");
 var choices = document.getElementById("choices");
-var score = document.getElementById("score");
+var scoreId = document.getElementById("score");
 var timer = document.getElementById("timer");
 var choiceA = document.getElementById("A");
 var choiceB = document.getElementById("B");
 var choiceC = document.getElementById("C");
 var choiceD = document.getElementById("D");
-var correct = document.getElementById("correct");
 
 var questions = [
     {
@@ -136,6 +135,18 @@ var questionIndex = 0;
 var timer;
 score = 0;
 
+sbutton.addEventListener("click", startQuiz);
+choiceA.addEventListener("click", checkAnswer);
+choiceB.addEventListener("click", checkAnswer);
+choiceC.addEventListener("click", checkAnswer);
+choiceD.addEventListener("click", checkAnswer);
+
+function startQuiz() {
+    start.style.display = "none";
+    renderQuestion();
+    quiz.style.display = "block";
+
+}
 function renderQuestion() {
     var q = questions[questionIndex];
     question.innerHTML = "<h4>" + q.question + "</h4>";
@@ -143,35 +154,39 @@ function renderQuestion() {
     choiceB.innerHTML = q.choiceB;
     choiceC.innerHTML = q.choiceC;
     choiceD.innerHTML = q.choiceD;
+    checkAnswer(event);
 }
 
-sbutton.addEventListener("click", startQuiz);
-// choiceA.addEventListener("click", renderAnswer);
-// choiceB.addEventListener("click", renderAnswer);
-// choiceC.addEventListener("click", renderAnswer);
-// choiceD.addEventListener("click", renderAnswer);
+
+function checkAnswer(event) {
+    var id = event.target.id;
+
+    if (id === questions[questionLength].correct) {
+        questionIndex++;
+        console.log("correct");
+    } else {
+        console.log("wrong")
+    }
+
+    //     score++;
+    //     
+    // showAnswer.innerText = "Correct!!";
+    // } else {
+    // showAnswer.innerText = "Wrong"
+
+    // } if (questionLength < questionIndex) {
+    //     questionLength++;
+    //     renderQuestion();
+    //     } else {
+    //         clearInterval(timer);
+    //         scoreRender();
+    //     }
 
 
-function startQuiz() {
-    start.style.display = "none";
-    renderQuestion()
-    quiz.style.display = "block";
-    // renderAnswer()
-    // counterRender();
-    // Timer = setInterval(counterRender, 1000);
-}
-
-function renderAnswer() {
-    // for (var qIndex = 0; qindex <= questionLength; qIndex++) {
-    //     answer.innerHTML += "<div class='prog' id=" = qindex + "></div>";
-
+    // function scoreRender() {
+    //     scoreId.style.display = "block";
+    //     var scorePercent = Math.round(100 * score / questions.length);
+    //     scoreId.innerText = "Score: " + scorePercent;
     // }
 }
-
-
-
-
-
-
-
 
