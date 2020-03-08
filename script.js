@@ -131,11 +131,11 @@ var questions = [
 ]
 var count = 0;
 var questionLength = questions.length;
-var currentIndex = 0;
+var currentQuestion = 0;
 var count = 0;
 var timer;
-var score = 0;
-var choices;
+score = 0;
+var correct = questions.correct;
 
 sbutton.addEventListener("click", startQuiz);
 choiceA.addEventListener("click", checkAnswer);
@@ -147,46 +147,32 @@ function startQuiz() {
     start.style.display = "none";
     renderQuestion();
     quiz.style.display = "block";
-    checkAnswer(event)
+    // renderanswer();
+}
 
+function renderQuestion() {
+    var q = questions[currentQuestion];
+    question.innerHTML = "<p>" + q.question + "</p>"
+    choiceA.innerHTML = q.choiceA;
+    choiceB.innerHTML = q.choiceB;
+    choiceC.innerHTML = q.choiceC;
+    choiceD.innerHTML = q.choiceD;
 }
-function renderQuestion(currentIndex) {
-    var q = questions[currentIndex];
-    question.textContent = (currentIndex + 1) + "." + q.question;
-    choiceA.textContent = q.choiceA;
-    choiceB.textContent = q.choiceB;
-    choiceC.textContent = q.choiceC;
-    choiceD.textContent = q.choiceD;
-    checkAnswer(event);
-}
+
 
 function checkAnswer(event) {
-    var chosenAnswer = event.target.innerHtml;
+    var chosenAnswer = event.target.innerHTML;
+    // console.log(event.target.innerHtml);
 
-    if (chosenAnswer === questions[currentIndex].correct) {
-        currentIndex++;
-        score += 10;
+    if (chosenAnswer === questions[currentQuestion].correct) {
+        currentQuestion++;
         console.log("correct");
-
+        renderQuestion();
     } else {
-        console.log; ("wrong");
+        console.log("wrong");
     }
-    if (currentIndex === questionLength - 1) {
-        quiz.style.display = "none";
-        start.style.display = "block";
-        sbutton.textContent = "Finish";
-    }
-    if (currentIndex === questionLength) {
-        choices.textContent = "Your Score: " + score;
 
-    }
-    renderQuestion(currentIndex);
 }
-renderQuestion(currentIndex);
-    // function renderanswer() {
-    //     for (var qIndex = 0; qIndex <= questionLength; qIndex++) {
-    //         choices = [];
-    //         for (id in questions[questionLength].correct) {
-    //             correct.push()
-    //         }
+
+
 
