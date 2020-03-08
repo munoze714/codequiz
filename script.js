@@ -137,8 +137,6 @@ var startingTime = 150;
 var ticker;
 var score = 0;
 var correct = questions.correct;
-var win = 0;
-var loss = 0;
 
 sbutton.addEventListener("click", startQuiz);
 choiceA.addEventListener("click", checkAnswer);
@@ -174,7 +172,6 @@ function checkAnswer(event) {
         showAnswer.innerHTML = "CORRECT";
         currentQuestion++;
         score += 10;
-        win++;
         if (currentQuestion === questions.length) {
             endGame();
         } else {
@@ -184,7 +181,6 @@ function checkAnswer(event) {
         }
 
     } else {
-        loss++;
         showAnswer.innerHTML = "WRONG";
         currentQuestion++;
         startingTime = startingTime - 10;
