@@ -41,7 +41,7 @@ var questions = [
     {
         question: "Choose the correct HTML tag for the largest heading",
         choiceA: "the h1 tag",
-        choiceB: "the H6 tag",
+        choiceB: "the h6 tag",
         choiceC: "the h4 tag",
         choiceD: "the largest tag",
         correct: "the h1 tag",
@@ -72,17 +72,17 @@ var questions = [
     },
     {
         question: "Where is the correct place to insert a JavaScript",
-        choiceA: "The body section",
+        choiceA: "it must be inserted in the body and head section",
         choiceB: "the head section",
-        choiceC: "it must be inserted in the body and head section",
+        choiceC: "The body section",
         choiceD: "it can be inserted in either the body or the head, as it makes no difference",
         correct: "The body section",
     },
     {
         question: "HTML:",
-        choiceA: "Hypertext Markup Language",
+        choiceA: "Hyperlink Markup Language",
         choiceB: "Hyper Type Markup Language",
-        choiceC: "Hyperlink Markup Language",
+        choiceC: "Hypertext Markup Language",
         choiceD: "Hold that microphone loosely",
         correct: "Hypertext Markup Language",
     },
@@ -99,7 +99,7 @@ var count = 0;
 var questionLength = questions.length;
 var currentQuestion = 0;
 var timer;
-var startingTime = 100;
+var startingTime = 50;
 var ticker;
 var score = 0;
 var correct = questions.correct;
@@ -139,8 +139,8 @@ function checkAnswer(event) {
     var chosenAnswer = event.target.innerHTML;
 
     if (chosenAnswer === questions[currentQuestion].correct) {
+        score++;
         showAnswer.innerHTML = "CORRECT";
-        score += 10;
         currentQuestion++;
         if (currentQuestion === questions.length) {
             endGame();
@@ -165,7 +165,7 @@ function checkAnswer(event) {
 }
 
 function endGame() {
-    quiz.innerHTML = "Your Score: " + score;
+    quiz.innerHTML = " Your Score: " + score + " of 10";
     scoreId.style.display = "block";
     clearTimeout(ticker)
 }
@@ -178,7 +178,7 @@ savebtn.addEventListener("click", function (event) {
 });
 function storeinitials(e) {
     localStorage.getItem("initals");
-    quiz.innerHTML = e + "Score " + score;
+    quiz.innerHTML = e + " Score " + score;
     scoreId.style.display = "block";
 }
 
