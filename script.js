@@ -114,6 +114,10 @@ function startQuiz() {
     ticker = setInterval(() => {
         startingTime--;
         timer.innerHTML = "Timer: " + startingTime;
+        if (startingTime === 0) {
+            clearTimeout(ticker)
+            endGame()
+        }
     }, 1000);
 
     start.style.display = "none";
@@ -136,8 +140,8 @@ function checkAnswer(event) {
 
     if (chosenAnswer === questions[currentQuestion].correct) {
         showAnswer.innerHTML = "CORRECT";
-        currentQuestion++;
         score += 10;
+        currentQuestion++;
         if (currentQuestion === questions.length) {
             endGame();
         } else {
@@ -163,6 +167,7 @@ function checkAnswer(event) {
 function endGame() {
     quiz.innerHTML = "Your Score: " + score;
     scoreId.style.display = "block";
+    clearTimeout(ticker)
 }
 
 savebtn.addEventListener("click", function (event) {
@@ -176,9 +181,6 @@ function storeinitials(e) {
     quiz.innerHTML = e + "Score " + score;
     scoreId.style.display = "block";
 }
-
-
-
 
 function saveinitials(e) {
     localStorage.setItem("initials", e)
