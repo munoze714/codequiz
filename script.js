@@ -10,6 +10,8 @@ var choiceA = document.getElementById("A");
 var choiceB = document.getElementById("B");
 var choiceC = document.getElementById("C");
 var choiceD = document.getElementById("D");
+var savebtn = document.getElementById("savebtn");
+var providedints = document.getElementById("providedints");
 
 var questions = [
     {
@@ -19,14 +21,6 @@ var questions = [
         choiceC: "Protocol",
         choiceD: "Hyperlink",
         correct: "Hyperlink",
-    },
-    {
-        question: "HTML the TITLE tag is …",
-        choiceA: "The upper most text on your pag",
-        choiceB: "What shows at the very top of your browser’s window",
-        choiceC: "The largest text, usually at the top of your page",
-        choiceD: "The most important HTML item",
-        correct: "What shows at the very top of your browser’s window",
     },
     {
         question: "How many parts does a HTML character entity has",
@@ -61,14 +55,6 @@ var questions = [
         correct: "the body tag",
     },
     {
-        question: "When specifying the source of an image referenced in your HTML document, the image should",
-        choiceA: "either be within the same folder as the HTML page, or the complete path name should be specified.",
-        choiceB: "be located on the flashdrive in use",
-        choiceC: "be sized apprpriately on the HTML page in order to fit",
-        choiceD: "be of a format tht HTML can recognize and manipulate",
-        correct: "either be within the same folder as the HTML page, or the complete path name should be specified.",
-    },
-    {
         question: "How can you make a list that lists the items with numbers?",
         choiceA: "the list tag",
         choiceB: "the ul tag",
@@ -77,18 +63,12 @@ var questions = [
         correct: "the ol tag",
     },
     {
-        question: "Which of the following means not equalt to in Javascript",
-        choiceA: "!= ",
+        question: "Which of the following means not equal to in Javascript",
+        choiceA: "!=",
         choiceB: "<>",
         choiceC: "=!",
         choiceD: "not",
         correct: "!=",
-    },
-    {
-        question: "The variables Numb1 and numb1, are interchangeable in JavaScript",
-        choiceA: "True",
-        choiceB: "False",
-        correct: "False",
     },
     {
         question: "Where is the correct place to insert a JavaScript",
@@ -97,20 +77,6 @@ var questions = [
         choiceC: "it must be inserted in the body and head section",
         choiceD: "it can be inserted in either the body or the head, as it makes no difference",
         correct: "The body section",
-    },
-    {
-        question: "Which of the following is not a use of JavaScript",
-        choiceA: "Browser detection",
-        choiceB: "cookies",
-        choiceC: "form validation",
-        choiceD: "user verification",
-        correct: "user verification",
-    },
-    {
-        question: "Curly Brackets look like this < >",
-        choiceA: "True",
-        choiceB: "False",
-        correct: "False",
     },
     {
         question: "HTML:",
@@ -133,7 +99,7 @@ var count = 0;
 var questionLength = questions.length;
 var currentQuestion = 0;
 var timer;
-var startingTime = 150;
+var startingTime = 100;
 var ticker;
 var score = 0;
 var correct = questions.correct;
@@ -197,6 +163,25 @@ function checkAnswer(event) {
 function endGame() {
     quiz.innerHTML = "Your Score: " + score;
     scoreId.style.display = "block";
+}
+
+savebtn.addEventListener("click", function (event) {
+    event.preventDefault();
+    var savelocal = providedints.value
+    saveinitials(savelocal)
+    storeinitials(savelocal)
+});
+function storeinitials(e) {
+    localStorage.getItem("initals");
+    quiz.innerHTML = e + "Score " + score;
+    scoreId.style.display = "block";
+}
+
+
+
+
+function saveinitials(e) {
+    localStorage.setItem("initials", e)
 }
 
 
