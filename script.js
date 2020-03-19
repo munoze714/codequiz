@@ -114,7 +114,7 @@ function startQuiz() {
     ticker = setInterval(() => {
         startingTime--;
         timer.innerHTML = "Timer: " + startingTime;
-        if (startingTime === 0) {
+        if (startingTime <= 0) {
             clearTimeout(ticker)
             endGame()
         }
