@@ -19,9 +19,9 @@ To start the quiz, the user clicks the "Start" button on the landing page.
 
 ## Deployed URL
 
-[]()
+[https://munoze714.github.io/codequiz/](https://munoze714.github.io/codequiz/)
 
-![alt text](assets/images/?raw=true)
+![alt text](assets/images/codingQuiz.jpeg?raw=true)
 
 ### Installation:
 
